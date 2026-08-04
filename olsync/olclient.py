@@ -280,13 +280,25 @@ class OverleafClient(object):
             "qqtotalfilesize": file_size,
         }
         files = {
+            # Overleaf's upload endpoint now rejects the request with 422
+            # {"success":false,"error":"invalid_filename"} unless the
+            # filename is also present as a plain multipart field, not just
+            # in qqfilename above. Confirmed live: identical request without
+            # this field gets 422; with it, 200 and the file is actually
+            # updated.
+            "name": (None, file_name),
             "qqfile": file
         }
 
         # Upload the file to the predefined folder
         r = reqs.post(UPLOAD_URL.format(project_id), cookies=self._cookie, params=params, files=files)
 
-        return r.status_code == str(200) and json.loads(r.content)["success"]
+        # status_code is an int; comparing to str(200) was always False here,
+        # so this reported failure on every call regardless of the real
+        # result. Harmless today only because callers don't check the return
+        # value, but worth fixing since it's the only signal this method
+        # gives back.
+        return r.status_code == 200 and json.loads(r.content)["success"]
 
     def delete_file(self, project_id, project_infos, file_name):
         """
