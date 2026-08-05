@@ -148,8 +148,11 @@ class OverleafClient(object):
 
         if r.ok:
             return json.loads(r.content)
-        elif r.status_code == str(400):
-            # Folder already exists
+        elif r.status_code == 400:
+            # Folder already exists. status_code is an int; comparing to
+            # str(400) was always False, so this branch never actually
+            # fired -- a real folder-exists response fell through to the
+            # HTTPError below instead of silently continuing.
             return
         else:
             raise reqs.HTTPError()
@@ -339,7 +342,10 @@ class OverleafClient(object):
 
         r = reqs.delete(DELETE_URL.format(project_id, file['_id']), cookies=self._cookie, headers=headers, json={})
 
-        return r.status_code == str(204)
+        # status_code is an int; comparing to str(204) was always False
+        # regardless of the real result, same bug class as upload_file and
+        # create_folder above.
+        return r.status_code == 204
 
     def download_pdf(self, project_id):
         """
