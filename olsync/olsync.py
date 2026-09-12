@@ -11,6 +11,7 @@
 
 import click
 import os
+import sys
 from yaspin import yaspin
 import pickle
 import zipfile
@@ -20,6 +21,14 @@ import glob
 import fnmatch
 import traceback
 from pathlib import Path
+
+# Windows consoles often default to a legacy codepage (e.g. cp1252) that can't
+# encode the emoji/braille characters used for status output and the spinner,
+# which crashes stdout.write() with UnicodeEncodeError. Force UTF-8 output.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 try:
     # Import for pip installation / wheel
