@@ -5,6 +5,21 @@
 
 This tool provides an easy way to synchronize Overleaf projects from and to your local computer. No paid account necessary.
 
+> **Note on this branch:** this `combined-fixes` branch is a personal-use combination of three
+> fixes for compatibility with Overleaf's current (Sept 2026) dashboard/API, needed because
+> upstream hasn't merged them yet:
+> - [#84](https://github.com/moritzgloeckl/overleaf-sync/pull/84) and
+>   [#85](https://github.com/moritzgloeckl/overleaf-sync/pull/85) by
+>   [@warnes](https://github.com/warnes) — project-list meta tag parsing and
+>   `get_project_infos`/upload/folder/delete backend fixes
+> - [#86](https://github.com/moritzgloeckl/overleaf-sync/pull/86) by
+>   [@semihvazgecen](https://github.com/semihvazgecen) — Windows Unicode/`cp1252` stdout crash fix
+>
+> All credit for the underlying fixes goes to the PR authors linked above and to
+> [Moritz Glöckl](https://github.com/moritzgloeckl), the original author of this project. This
+> branch exists purely so the tool works out of the box while those PRs are pending review — once
+> they're merged upstream, use the official package instead.
+
 ----
 
 ## Features
