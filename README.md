@@ -3,6 +3,19 @@
 
 ![Made In Austria](https://img.shields.io/badge/Made%20in-Austria-%23ED2939.svg) ![PyPI - License](https://img.shields.io/pypi/l/overleaf-sync.svg) ![PyPI](https://img.shields.io/pypi/v/overleaf-sync.svg) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/overleaf-sync.svg)
 
+> **This is a fork of [moritzgloeckl/overleaf-sync](https://github.com/moritzgloeckl/overleaf-sync).**
+> The PyPI package (and this `master` branch) currently fails against Overleaf's dashboard
+> (as of Sept 2026) — see upstream [#84](https://github.com/moritzgloeckl/overleaf-sync/pull/84),
+> [#85](https://github.com/moritzgloeckl/overleaf-sync/pull/85),
+> [#86](https://github.com/moritzgloeckl/overleaf-sync/pull/86). **For a working version, install
+> the [`combined-fixes`](https://github.com/semihvazgecen/overleaf-sync/tree/combined-fixes)
+> branch instead:**
+> ```
+> pip install "flit_core<4"
+> pip install --no-build-isolation "git+https://github.com/semihvazgecen/overleaf-sync.git@combined-fixes"
+> ```
+> Once those PRs are merged upstream, use the official `pip install overleaf-sync` instead.
+
 This tool provides an easy way to synchronize Overleaf projects from and to your local computer. No paid account necessary.
 
 ----
