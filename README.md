@@ -11,8 +11,7 @@
 > the [`combined-fixes`](https://github.com/semihvazgecen/overleaf-sync/tree/combined-fixes)
 > branch instead:**
 > ```
-> pip install "flit_core<4"
-> pip install --no-build-isolation "git+https://github.com/semihvazgecen/overleaf-sync.git@combined-fixes"
+> pip install "git+https://github.com/semihvazgecen/overleaf-sync.git@combined-fixes"
 > ```
 > Once those PRs are merged upstream, use the official `pip install overleaf-sync` instead.
 
