@@ -19,6 +19,11 @@ This tool provides an easy way to synchronize Overleaf projects from and to your
 > [Moritz Glöckl](https://github.com/moritzgloeckl), the original author of this project. This
 > branch exists purely so the tool works out of the box while those PRs are pending review — once
 > they're merged upstream, use the official package instead.
+>
+> **Install:**
+> ```
+> pip install "git+https://github.com/semihvazgecen/overleaf-sync.git@combined-fixes"
+> ```
 
 ----
 
